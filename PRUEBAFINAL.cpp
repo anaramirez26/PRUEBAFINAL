@@ -11,6 +11,7 @@ int main(void)
 {   
     /*VARIABLES DECLARADAS*/
     int opc; /*VARIABLE PARA SWITCH PRINCIPAL*/
+    string arrjug[2]; /* ARREGLO PARA NOMBRES DE JUGADORES */
 
     /*DO WHILE PARA SWITCH PRINCIPAL*/
     do {
@@ -31,6 +32,20 @@ int main(void)
             case 1: 
                 /* CASE DE NUEVA PARTIDA */
                 cout << endl << endl << "NUEVA PARTIDA" << endl << endl;
+
+                /* INGRESAR NOMBRE DE JUGADORES */
+                for (int i = 0; i < 2; i++) {
+                    cout << "Ingrese el nombre del jugador " << (i + 1) << " : ";
+                    cin >> arrjug[i];
+                }
+                
+                /* LISTA DE NOMBRES DE JUGADORES */
+                cout << endl << "Los nombres de los jugadores son: " << endl;
+                for (int i = 0; i < 2; i++) {
+                    cout << "Jugador " << (i + 1) << " : " << arrjug[i] << endl;
+                }
+
+                cout << endl << endl;
                 break;
             
             case 2: 
