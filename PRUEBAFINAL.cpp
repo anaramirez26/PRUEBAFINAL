@@ -4,6 +4,7 @@
 #include "ctime"
 #include "cstdlib"
 #include "unistd.h"
+#include "fstream"
 using namespace std;
 
 /*PROTOTIPO DE FUNCION*/
@@ -54,6 +55,19 @@ int main(void)
             
             case 2: {
                 cout << endl << "REGISTRO DE PARTIDAS" << endl << endl;
+
+                 /*CREANDO ARCHIVO PARA REGISTRO DE PARTIDAS*/
+                ofstream archivo("registropartidas.txt", ios::app);
+
+                if (archivo.is_open()) {
+
+                    archivo.close();
+                    cout << "Historial de partidas guardado en 'registropartidas.txt'" << endl << endl;
+
+                } else {
+                    cout << "Error al abrir el archivo 'registropartidas.txt'" << endl;
+                }
+
                 break; 
             }
 
