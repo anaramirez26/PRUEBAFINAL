@@ -12,6 +12,7 @@ void generarTablero(int mat[3][3]);
 void mostrarTablero(int mat[3][3]);
 bool yaDicho(int, int [], int);
 void marcarNumero(int, int mat[3][3]);
+void tableroActualizado(int mat[3][3]);
 
 /*FUNCION MAIN*/
 int main(void)
@@ -96,15 +97,10 @@ int main(void)
                         marcarNumero(numAl, mat[k]);
                     }
 
-                    /*MOSTRAR LOS TABLEROS ACTUALIZADOS*/
+                    /*LLAMA A LA FUNCION TABLERO ACTUALIZADO*/
                     for (int k = 0; k < 2; k++) {
-                        cout << "Tablero del jugador " << arrjug[k] << " actualizado : " << endl << endl;
-                        for (int i = 0; i < 3; i++) {
-                            for (int j = 0; j < 3; j++) {
-                                cout << mat[k][i][j] << "  ";
-                            }
-                            cout << endl << endl;
-                        }
+                        cout << "Tablero del jugador " << arrjug[k] << " : " << endl << endl;
+                        tableroActualizado(mat[k]);
                     }
                     
                     /*PAUSA ENTRE GENERACIONES DE NUMEROS*/
@@ -212,5 +208,16 @@ void marcarNumero(int num, int mat[3][3])
                 mat[i][j] = 0;
             }
         }
+    }
+}
+
+/*FUNCION PARA MOSTRAR TABLERO ACTUALIZADO DE CADA JUGADOR*/
+void tableroActualizado(int mat[3][3])
+{
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << mat[i][j] << "  ";
+        }
+        cout << endl << endl;
     }
 }
