@@ -6,13 +6,17 @@
 #include "unistd.h"
 using namespace std;
 
+/*PROTOTIPO DE FUNCION*/
+bool yaColocado(int, int mat[3][3]);
+
 /*FUNCION MAIN*/
 int main(void)
 {   
     srand(time(0)); /*INICIALIZANDO EL GENERADOR DE NUMEROS ALEATORIOS*/
     /*VARIABLES DECLARADAS*/
-    int opc, numAl, mat[3][3]; /* VARIABLE PARA SWITCH PRINCIPAL, NUMEROS ALEATORIOS, MATRIZ DE JUGADORES */
+    int opc, numAl; /* VARIABLE PARA SWITCH PRINCIPAL Y NUMEROS ALEATORIOS*/
     string arrjug[2]; /* ARREGLO PARA NOMBRES DE JUGADORES */
+    int mat[2][3][3] = {0}; /*MATRICES PARA CADA JUGADOR*/
 
     /*DO WHILE PARA SWITCH PRINCIPAL*/
     do {
@@ -50,24 +54,29 @@ int main(void)
 
                 cout << endl << "TABLEROS DE JUGADORES" << endl << endl;
                 /* GENERAR Y MOSTRAR LOS TABLEROS PARA CADA JUGADOR */
-                for (int i = 0; i < 2; i++) {
-                    cout << "Tablero del jugador " << arrjug[i] << " : " << endl << endl;
+                for (int k = 0; k < 2; k++) {
+                    cout << "Tablero del jugador " << arrjug[k] << " : " << endl << endl;
 
-                    for (int k = 0; k < 3; k++) {
+                    /*GENERAR NUMEROS ALEATORIOS UNICOS PARA CADA TABLERO*/
+                    for (int i = 0; i < 3; i++) {
                         for (int j = 0; j < 3; j++) {
-                            numAl = 1 + rand() % 20; 
-                            mat[k][j] = numAl;       
+                            do {
+                                numAl = 1 + rand() % 20;
+                            } while (yaColocado(numAl, mat[k]));
+                            mat[k][i][j] = numAl;
                         }
                     }
 
-                    for (int k = 0; k < 3; k++) {
+                    /*MOSTRAR EL TABLERO DE CADA JUGADOR*/
+                    for (int i = 0; i < 3; i++) {
                         for (int j = 0; j < 3; j++) {
-                            cout << mat[k][j] << "  "; 
+                            cout << mat[k][i][j] << "  ";
                         }
-                        cout << endl << endl; 
+                        cout << endl << endl;
                     }
+
                 }
-                
+
                 break;
             
             case 2: 
@@ -101,4 +110,17 @@ int main(void)
     } while (opc != 6);
 
     return 0;
+}
+
+/*FUNCION PARA VERIFICAR SI UN NUMERO YA HA SIDO COLOCADO EN EL TABLERO*/
+bool yaColocado(int num, int mat[3][3]) 
+{
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (mat[i][j] == num) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
