@@ -19,7 +19,7 @@ bool tableroCompleto(int mat[3][3]);
 bool verificarEmpate(int mat[2][3][3]);
 void mostrarGanador(int mat[2][3][3], string arrjug[2], bool &juegoTerminado);
 
-
+int contadorPartidas = 1; /*INICIALIZANDO EN 1 LA VARIABLE CONTADOR DE PARTIDAS PARA REGISTRO DE PARTIDAS*/
 /*FUNCION MAIN*/
 int main(void)
 {   
@@ -60,13 +60,23 @@ int main(void)
                 ofstream archivo("registropartidas.txt", ios::app);
 
                 if (archivo.is_open()) {
+                    /*REGISTRAR DENTRO DEL ARCHIVO LAS PARTIDAS, JUGADORES Y SUS PUNTUACIONES*/
+                    archivo << "Partida #" << contadorPartidas << ":" << endl;
+                    archivo << "Jugadores: " << arrjug[0] << " y " << arrjug[1] << endl;
+
+                    int puntuacionJugador1 = 0, puntuacionJugador2 = 0;
+
+                    archivo << "Puntuacion de " << arrjug[0] << ": " << puntuacionJugador1 << "/9" << endl;
+                    archivo << "Puntuacion de " << arrjug[1] << ": " << puntuacionJugador2 << "/9" << endl;
+                    archivo << endl;
 
                     archivo.close();
                     cout << "Historial de partidas guardado en 'registropartidas.txt'" << endl << endl;
-
                 } else {
                     cout << "Error al abrir el archivo 'registropartidas.txt'" << endl;
                 }
+
+                contadorPartidas++;
 
                 break; 
             }
