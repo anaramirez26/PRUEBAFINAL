@@ -98,6 +98,17 @@ int main(void)
                         marcarNumero(numAl, mat[k]);
                     }
 
+                    /*MOSTRAR LOS TABLEROS ACTUALIZADOS*/
+                    for (int k = 0; k < 2; k++) {
+                        cout << "Tablero del jugador " << arrjug[k] << " actualizado : " << endl << endl;
+                        for (int i = 0; i < 3; i++) {
+                            for (int j = 0; j < 3; j++) {
+                                cout << mat[k][i][j] << "  ";
+                            }
+                            cout << endl << endl;
+                        }
+                    }
+                    
                     /*PAUSA ENTRE GENERACIONES DE NUMEROS*/
                     sleep(1);
 
