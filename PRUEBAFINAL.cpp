@@ -9,8 +9,9 @@ using namespace std;
 /*FUNCION MAIN*/
 int main(void)
 {   
+    srand(time(0)); /*INICIALIZANDO EL GENERADOR DE NUMEROS ALEATORIOS*/
     /*VARIABLES DECLARADAS*/
-    int opc; /*VARIABLE PARA SWITCH PRINCIPAL*/
+    int opc, numAl, mat[3][3]; /* VARIABLE PARA SWITCH PRINCIPAL, NUMEROS ALEATORIOS, MATRIZ DE JUGADORES */
     string arrjug[2]; /* ARREGLO PARA NOMBRES DE JUGADORES */
 
     /*DO WHILE PARA SWITCH PRINCIPAL*/
@@ -46,6 +47,27 @@ int main(void)
                 }
 
                 cout << endl << endl;
+
+                cout << endl << "TABLEROS DE JUGADORES" << endl << endl;
+                /* GENERAR Y MOSTRAR LOS TABLEROS PARA CADA JUGADOR */
+                for (int i = 0; i < 2; i++) {
+                    cout << "Tablero del jugador " << arrjug[i] << " : " << endl << endl;
+
+                    for (int k = 0; k < 3; k++) {
+                        for (int j = 0; j < 3; j++) {
+                            numAl = 1 + rand() % 20; 
+                            mat[k][j] = numAl;       
+                        }
+                    }
+
+                    for (int k = 0; k < 3; k++) {
+                        for (int j = 0; j < 3; j++) {
+                            cout << mat[k][j] << "  "; 
+                        }
+                        cout << endl << endl; 
+                    }
+                }
+                
                 break;
             
             case 2: 
