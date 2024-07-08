@@ -8,6 +8,7 @@ using namespace std;
 
 /*PROTOTIPO DE FUNCION*/
 bool yaColocado(int, int mat[3][3]);
+void generarTablero(int mat[3][3]);
 bool yaDicho(int, int [], int);
 void marcarNumero(int, int mat[3][3]);
 
@@ -61,15 +62,8 @@ int main(void)
                 for (int k = 0; k < 2; k++) {
                     cout << "Tablero del jugador " << arrjug[k] << " : " << endl << endl;
 
-                    /*GENERAR NUMEROS ALEATORIOS UNICOS PARA CADA TABLERO*/
-                    for (int i = 0; i < 3; i++) {
-                        for (int j = 0; j < 3; j++) {
-                            do {
-                                numAl = 1 + rand() % 20;
-                            } while (yaColocado(numAl, mat[k]));
-                            mat[k][i][j] = numAl;
-                        }
-                    }
+                    //*LLAMA A LA FUNCION GENERAR TABLERO*/
+                    generarTablero(mat[k]);
 
                     /*MOSTRAR EL TABLERO DE CADA JUGADOR*/
                     for (int i = 0; i < 3; i++) {
@@ -100,7 +94,7 @@ int main(void)
                     cout << endl << endl << "Numero generado por el bot: " << numAl << endl << endl;
 
                     numerosDichos[contadorNumerosDichos++] = numAl;
-                    
+
                     /*LLAMA A LA FUNCION MARCAR NUMERO*/
                     for (int k = 0; k < 2; k++) {
                         marcarNumero(numAl, mat[k]);
@@ -175,6 +169,20 @@ bool yaColocado(int num, int mat[3][3])
         }
     }
     return false;
+}
+
+/*FUNCION PARA GENERAR NUMEROS ALEATORIOS UNICOS PARA CADA TABLERO*/
+void generarTablero(int mat[3][3])
+{
+    int numAl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            do {
+                numAl = 1 + rand() % 20;
+            } while (yaColocado(numAl, mat));
+            mat[i][j] = numAl;
+        }
+    }
 }
 
 /*FUNCION PARA VERIFICAR SI UN NUMERO YA HA SIDO DICHO POR EL BOT*/
