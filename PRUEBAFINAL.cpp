@@ -19,6 +19,8 @@ int main(void)
     int opc, numAl; /* VARIABLE PARA SWITCH PRINCIPAL Y NUMEROS ALEATORIOS*/
     string arrjug[2]; /* ARREGLO PARA NOMBRES DE JUGADORES */
     int mat[2][3][3] = {0}; /*MATRICES PARA CADA JUGADOR*/
+    int numerosDichos[20] = {0}; /*ARREGLO DE NUMEROS YA DICHOS POR EL BOT*/
+    int contadorNumerosDichos = 0; /*CONTADOR DE NUMEROS YA DICHOS INICIALIZADO EN CERO*/
 
     /*DO WHILE PARA SWITCH PRINCIPAL*/
     do {
@@ -90,10 +92,15 @@ int main(void)
                 bool juegoTerminado = false;
                 while(!juegoTerminado) {
 
-                    /*BOT GENERA NUMEROS ALEATORIOS*/
-                    numAl = 1 + rand() % 20;
+                    /*BOT GENERA NUMEROS ALEATORIOS DIFERENTES LLAMANDO A LA FUNCION YA DICHO*/
+                    do {
+                        numAl = 1 + rand() % 20;
+                    } while (yaDicho(numAl, numerosDichos, contadorNumerosDichos));
+
                     cout << endl << endl << "Numero generado por el bot: " << numAl << endl << endl;
 
+                    numerosDichos[contadorNumerosDichos++] = numAl;
+                    
                     /*LLAMA A LA FUNCION MARCAR NUMERO*/
                     for (int k = 0; k < 2; k++) {
                         marcarNumero(numAl, mat[k]);
