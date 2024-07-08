@@ -82,6 +82,21 @@ int main(void)
                 cin.ignore();
                 cin.get();
 
+                cout << endl << "LA PARTIDA HA COMENZADO!" << endl;
+
+                /*BUCLE MIENTRAS EL JUEGO NO ESTE TERMINADO*/
+                bool juegoTerminado = false;
+                while(!juegoTerminado) {
+
+                    /*BOT GENERA NUMEROS ALEATORIOS*/
+                    numAl = 1 + rand() % 20;
+                    cout << endl << endl << "Numero generado por el bot: " << numAl << endl << endl;
+
+                    /*PAUSA ENTRE GENERACIONES DE NUMEROS*/
+                    sleep(1);
+
+                }
+                
                 break;
             }
             
