@@ -14,6 +14,9 @@ bool yaDicho(int, int [], int);
 void marcarNumero(int, int mat[3][3]);
 void tableroActualizado(int mat[3][3]);
 bool tableroCompleto(int mat[3][3]);
+bool verificarEmpate(int mat[2][3][3]);
+void mostrarGanador(int mat[2][3][3], string arrjug[2], bool &juegoTerminado);
+
 
 /*FUNCION MAIN*/
 int main(void)
@@ -254,4 +257,24 @@ bool tableroCompleto(int mat[3][3])
         }
     }
     return true;
+}
+
+/*FUNCION PARA VERIFICAR EMPATE SI AMBOS TABLEROS ESTAN COMPLETAMENTE LLENOS DE CEROS*/
+bool verificarEmpate(int mat[2][3][3])
+{
+    return tableroCompleto(mat[0]) && tableroCompleto(mat[1]);
+}
+
+/*FUNCION PARA MOSTRAR EL GANADOR SI SOLO UN JUGADOR TIENE SU TABLERO COMPLETO DE CEROS*/
+void mostrarGanador(int mat[2][3][3], string arrjug[2], bool &juegoTerminado)
+{
+    if (tableroCompleto(mat[0])) {
+        cout << endl << "EL JUGADOR " << arrjug[0] << " HA GANADO LA PARTIDA!" << endl;
+        juegoTerminado = true;
+        cout << endl << "LA PARTIDA HA TERMINADO..." << endl << endl;
+    } else if (tableroCompleto(mat[1])) {
+        cout << endl << "EL JUGADOR " << arrjug[1] << " HA GANADO LA PARTIDA!" << endl;
+        juegoTerminado = true;
+        cout << endl << "LA PARTIDA HA TERMINADO..." << endl << endl;
+    }
 }
