@@ -19,7 +19,7 @@ int main(void)
 {   
     srand(time(0)); /*INICIALIZANDO EL GENERADOR DE NUMEROS ALEATORIOS*/
     /*VARIABLES DECLARADAS*/
-    int opc, numAl; /* VARIABLE PARA SWITCH PRINCIPAL Y NUMEROS ALEATORIOS*/
+    int opc, numAl, opcion; /*VARIABLES "OPC" PARA SWITCH PRINCIPAL, "NUMAL" PARA NUMEROS ALEATORIOS, "OPCION" PARA MOSTRAR AYUDA O CONTINUAR PARTIDA*/
     string arrjug[2]; /* ARREGLO PARA NOMBRES DE JUGADORES */
     int mat[2][3][3] = {0}; /*MATRICES PARA CADA JUGADOR*/
     int numerosDichos[20] = {0}; /*ARREGLO DE NUMEROS YA DICHOS POR EL BOT*/
@@ -106,6 +106,18 @@ int main(void)
                     /*PAUSA ENTRE GENERACIONES DE NUMEROS*/
                     sleep(1);
 
+                    /*DO WHILE QUE MUESTRA OPCION DE AYUDA O CONTINUAR CON LA PARTIDA DESPUES DE MOSTRAR LOS TABLEROS ACTUALIZADOS*/
+                    do {
+                        if (!juegoTerminado) {
+                            cout << "1. Mostrar la ayuda" << endl;
+                            cout << "2. Continuar con la partida" << endl;
+                            cin >> opcion;
+
+                            if (opcion != 2 && opcion!=1) {
+                                cout << "Opcion invalida. Por favor, seleccione 1 o 2" << endl;
+                            }
+                        }
+                    } while (opcion != 1 && opcion != 2);
                 }
 
                 break;
