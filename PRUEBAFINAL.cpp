@@ -9,6 +9,7 @@ using namespace std;
 /*PROTOTIPO DE FUNCION*/
 bool yaColocado(int, int mat[3][3]);
 void generarTablero(int mat[3][3]);
+void mostrarTablero(int mat[3][3]);
 bool yaDicho(int, int [], int);
 void marcarNumero(int, int mat[3][3]);
 
@@ -65,13 +66,8 @@ int main(void)
                     //*LLAMA A LA FUNCION GENERAR TABLERO*/
                     generarTablero(mat[k]);
 
-                    /*MOSTRAR EL TABLERO DE CADA JUGADOR*/
-                    for (int i = 0; i < 3; i++) {
-                        for (int j = 0; j < 3; j++) {
-                            cout << mat[k][i][j] << "  ";
-                        }
-                        cout << endl << endl;
-                    }
+                    /*LLAMA A LA FUNCION MOSTRAR TABLERO DE CADA JUGADOR*/
+                    mostrarTablero(mat[k]);
 
                 }
 
@@ -182,6 +178,17 @@ void generarTablero(int mat[3][3])
             } while (yaColocado(numAl, mat));
             mat[i][j] = numAl;
         }
+    }
+}
+
+/*FUNCION PARA MOSTRAR EL TABLERO INICIAL DE CADA JUGADOR*/
+void mostrarTablero(int mat[3][3])
+{
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << mat[i][j] << "  ";
+        }
+        cout << endl << endl;
     }
 }
 
