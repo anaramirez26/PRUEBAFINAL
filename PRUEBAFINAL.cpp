@@ -113,7 +113,15 @@ int main(void)
                             cout << "2. Continuar con la partida" << endl;
                             cin >> opcion;
 
-                            if (opcion != 2 && opcion!=1) {
+                            if (opcion == 1) {
+                                cout << "AYUDA" << endl;
+                                cout << "instrucciones del juego" << endl;
+
+                                /*ENTER PARA CONTINUAR CON LA PARTIDA LUEGO DE MOSTRAR LA AYUDA*/
+                                cout << "Presione Enter para continuar con la partida..." << endl;
+                                cin.ignore();
+                                cin.get();
+                            } else if (opcion != 2) {
                                 cout << "Opcion invalida. Por favor, seleccione 1 o 2" << endl;
                             }
                         }
