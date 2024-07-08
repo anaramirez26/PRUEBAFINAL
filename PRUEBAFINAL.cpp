@@ -7,6 +7,7 @@
 using namespace std;
 
 /*PROTOTIPO DE FUNCION*/
+void nuevaPartida(string arrjug[2], int mat[2][3][3]);
 bool yaColocado(int, int mat[3][3]);
 void generarTablero(int mat[3][3]);
 void mostrarTablero(int mat[3][3]);
@@ -47,102 +48,7 @@ int main(void)
         switch (opc) {
             case 1: {
                 /* CASE DE NUEVA PARTIDA */
-                cout << endl << endl << "NUEVA PARTIDA" << endl << endl;
-
-                /* INGRESAR NOMBRE DE JUGADORES */
-                for (int i = 0; i < 2; i++) {
-                    cout << "Ingrese el nombre del jugador " << (i + 1) << " : ";
-                    cin >> arrjug[i];
-                }
-                
-                /* LISTA DE NOMBRES DE JUGADORES */
-                cout << endl << "Los nombres de los jugadores son: " << endl;
-                for (int i = 0; i < 2; i++) {
-                    cout << "Jugador " << (i + 1) << " : " << arrjug[i] << endl;
-                }
-
-                cout << endl << endl;
-
-                cout << endl << "TABLEROS DE JUGADORES" << endl << endl;
-                /* GENERAR Y MOSTRAR LOS TABLEROS PARA CADA JUGADOR */
-                for (int k = 0; k < 2; k++) {
-                    cout << "Tablero del jugador " << arrjug[k] << " : " << endl << endl;
-
-                    //*LLAMA A LA FUNCION GENERAR TABLERO*/
-                    generarTablero(mat[k]);
-
-                    /*LLAMA A LA FUNCION MOSTRAR TABLERO DE CADA JUGADOR*/
-                    mostrarTablero(mat[k]);
-
-                }
-
-                /*PAUSA Y PRESIONAR ENTER PARA QUE EL BOT COMIENCE A GENERAR NUMEROS*/
-                cout << "Presione Enter para que el bot genere el primer numero..." << endl;
-                cin.ignore();
-                cin.get();
-
-                cout << endl << "LA PARTIDA HA COMENZADO!" << endl;
-
-                /*BUCLE MIENTRAS EL JUEGO NO ESTE TERMINADO*/
-                bool juegoTerminado = false;
-                while(!juegoTerminado) {
-
-                    /*BOT GENERA NUMEROS ALEATORIOS DIFERENTES LLAMANDO A LA FUNCION YA DICHO*/
-                    do {
-                        numAl = 1 + rand() % 20;
-                    } while (yaDicho(numAl, numerosDichos, contadorNumerosDichos));
-
-                    cout << endl << endl << "Numero generado por el bot: " << numAl << endl << endl;
-
-                    numerosDichos[contadorNumerosDichos++] = numAl;
-
-                    /*LLAMA A LA FUNCION MARCAR NUMERO*/
-                    for (int k = 0; k < 2; k++) {
-                        marcarNumero(numAl, mat[k]);
-                    }
-
-                    /*LLAMA A LA FUNCION TABLERO ACTUALIZADO*/
-                    for (int k = 0; k < 2; k++) {
-                        cout << "Tablero del jugador " << arrjug[k] << " : " << endl << endl;
-                        tableroActualizado(mat[k]);
-                    }
-                    
-                    /*PAUSA ENTRE GENERACIONES DE NUMEROS*/
-                    sleep(1);
-
-                    /*DO WHILE QUE MUESTRA OPCION DE AYUDA O CONTINUAR CON LA PARTIDA DESPUES DE MOSTRAR LOS TABLEROS ACTUALIZADOS*/
-                    do {
-                        if (!juegoTerminado) {
-                            cout << "1. Mostrar la ayuda" << endl;
-                            cout << "2. Continuar con la partida" << endl;
-                            cin >> opcion;
-
-                            if (opcion == 1) {
-                                cout << "AYUDA" << endl;
-                                cout << "instrucciones del juego" << endl;
-
-                                /*ENTER PARA CONTINUAR CON LA PARTIDA LUEGO DE MOSTRAR LA AYUDA*/
-                                cout << "Presione Enter para continuar con la partida..." << endl;
-                                cin.ignore();
-                                cin.get();
-                            } else if (opcion != 2) {
-                                cout << "Opcion invalida. Por favor, seleccione 1 o 2" << endl;
-                            }
-                        }
-                    } while (opcion != 1 && opcion != 2);
-
-                    /*LLAMA A FUNCION VERIFICAR EMPATE*/
-                    if (verificarEmpate(mat)) {
-                        cout << endl << "EL JUEGO TERMINO EN EMPATE!" << endl;
-                        juegoTerminado = true;
-                        cout << endl << "LA PARTIDA HA TERMINADO..." << endl << endl;
-                    } else {
-                        /*LLAMA A FUNCION MOSTRAR GANADOR*/
-                        mostrarGanador(mat, arrjug, juegoTerminado);
-                    }
-                    
-                }
-
+               nuevaPartida(arrjug, mat);
                 break;
             }
             
@@ -184,6 +90,110 @@ int main(void)
 
     return 0;
 }
+void nuevaPartida(string arrjug[2], int mat[2][3][3]) 
+{
+    int numAl, opcion; /*VARIABLES "NUMAL" PARA NUMEROS ALEATORIOS, "OPCION" PARA MOSTRAR AYUDA O CONTINUAR PARTIDA*/
+    int numerosDichos[20] = {0}; /*ARREGLO DE NUMEROS YA DICHOS POR EL BOT*/
+    int contadorNumerosDichos = 0; /*CONTADOR DE NUMEROS YA DICHOS INICIALIZADO EN CERO*/
+
+    /*CASE DE NUEVA PARTIDA*/
+    cout << endl << endl << "HAZ INICIADO UNA NUEVA PARTIDA!" << endl << endl;
+
+    /*INGRESAR NOMBRE DE JUGADORES*/            
+    for (int i = 0; i < 2; i++) {
+        cout << "Ingrese el nombre del jugador " << (i + 1) << " : ";
+        cin >> arrjug[i];
+    }
+
+    /*LISTA DE NOMBRES DE JUGADORES*/
+    cout << endl << "Los nombres de los jugadores son: " << endl;
+    for (int i = 0; i < 2; i++) {
+        cout << "Jugador " << (i + 1) << " : " << arrjug[i] << endl;
+    }
+
+    cout << endl << endl;
+
+    cout << endl << "TABLEROS DE JUGADORES" << endl << endl;
+    /*GENERAR Y MOSTRAR LOS TABLEROS PARA CADA JUGADOR*/
+    for (int k = 0; k < 2; k++) {
+        cout << "Tablero del jugador " << arrjug[k] << " : " << endl << endl;
+
+        /*LLAMA A LA FUNCION GENERAR TABLERO*/
+        generarTablero(mat[k]);
+
+        /*LLAMA A LA FUNCION MOSTRAR TABLERO DE CADA JUGADOR*/
+        mostrarTablero(mat[k]);
+
+    }
+
+    /*PAUSA Y PRESIONAR ENTER PARA QUE EL BOT COMIENCE A GENERAR NUMEROS*/
+    cout << "Presione Enter para que el bot genere el primer numero..." << endl;
+    cin.ignore(); 
+    cin.get();
+
+    cout << endl << "LA PARTIDA HA COMENZADO!" << endl;
+
+    /*BUCLE MIENTRAS EL JUEGO NO ESTE TERMINADO*/
+    bool juegoTerminado = false;
+    while(!juegoTerminado) {
+
+        /*BOT GENERA NUMEROS ALEATORIOS DIFERENTES LLAMANDO A LA FUNCION YA DICHO*/
+        do {
+            numAl = 1 + rand() % 20;
+        } while (yaDicho(numAl, numerosDichos, contadorNumerosDichos));
+
+        cout << endl << endl << "Numero generado por el bot: " << numAl << endl << endl;
+
+        numerosDichos[contadorNumerosDichos++] = numAl;
+
+        /*LLAMA A LA FUNCION MARCAR NUMERO*/
+        for (int k = 0; k < 2; k++) {
+            marcarNumero(numAl, mat[k]);
+        }
+
+        /*LLAMA A LA FUNCION TABLERO ACTUALIZADO*/
+        for (int k = 0; k < 2; k++) {
+            cout << "Tablero del jugador " << arrjug[k] << " : " << endl << endl;
+            tableroActualizado(mat[k]);
+        }
+
+        /*PAUSA ENTRE GENERACIONES DE NUMEROS*/
+        sleep(1);
+
+        /*DO WHILE QUE MUESTRA OPCION DE AYUDA O CONTINUAR CON LA PARTIDA DESPUES DE MOSTRAR LOS TABLEROS ACTUALIZADOS*/
+        do {
+            if (!juegoTerminado) {
+                cout << "1. Mostrar la ayuda" << endl;
+                cout << "2. Continuar con la partida" << endl;
+                cin >> opcion;
+
+                if (opcion == 1) {
+                    cout << "AYUDA" << endl;
+                    cout << "reglas" << endl;
+                    /*ENTER PARA CONTINUAR CON LA PARTIDA LUEGO DE MOSTRAR LA AYUDA*/
+                    cout << "Presione Enter para continuar con la partida..." << endl;
+                    cin.ignore();
+                    cin.get();
+                } else if (opcion != 2) {
+                    cout << "Opcion invalida. Por favor, seleccione 1 o 2" << endl;
+                }
+            }
+        } while (opcion != 1 && opcion != 2);
+
+        /*LLAMA A FUNCION VERIFICAR EMPATE*/
+        if (verificarEmpate(mat)) {
+            cout << endl << "EL JUEGO TERMINO EN EMPATE!" << endl;
+            juegoTerminado = true;
+            cout << endl << "LA PARTIDA HA TERMINADO..." << endl << endl;
+        } else {
+            /*LLAMA A FUNCION MOSTRAR GANADOR*/
+            mostrarGanador(mat, arrjug, juegoTerminado);
+        }
+
+    }
+
+}
+
 
 /*FUNCION PARA VERIFICAR SI UN NUMERO YA HA SIDO COLOCADO EN EL TABLERO*/
 bool yaColocado(int num, int mat[3][3]) 
