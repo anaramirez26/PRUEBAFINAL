@@ -8,6 +8,7 @@ using namespace std;
 
 /*PROTOTIPO DE FUNCION*/
 bool yaColocado(int, int mat[3][3]);
+bool yaDicho(int, int [], int);
 void marcarNumero(int, int mat[3][3]);
 
 /*FUNCION MAIN*/
@@ -164,6 +165,17 @@ bool yaColocado(int num, int mat[3][3])
             if (mat[i][j] == num) {
                 return true;
             }
+        }
+    }
+    return false;
+}
+
+/*FUNCION PARA VERIFICAR SI UN NUMERO YA HA SIDO DICHO POR EL BOT*/
+bool yaDicho(int num, int numerosDichos[], int contador)
+{
+    for (int i = 0; i < contador; i++) {
+        if (numerosDichos[i] == num) {
+            return true;
         }
     }
     return false;
