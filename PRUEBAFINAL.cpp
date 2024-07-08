@@ -130,6 +130,17 @@ int main(void)
                             }
                         }
                     } while (opcion != 1 && opcion != 2);
+
+                    /*LLAMA A FUNCION VERIFICAR EMPATE*/
+                    if (verificarEmpate(mat)) {
+                        cout << endl << "EL JUEGO TERMINO EN EMPATE!" << endl;
+                        juegoTerminado = true;
+                        cout << endl << "LA PARTIDA HA TERMINADO..." << endl << endl;
+                    } else {
+                        /*LLAMA A FUNCION MOSTRAR GANADOR*/
+                        mostrarGanador(mat, arrjug, juegoTerminado);
+                    }
+                    
                 }
 
                 break;
