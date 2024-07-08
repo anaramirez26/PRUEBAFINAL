@@ -13,6 +13,7 @@ void mostrarTablero(int mat[3][3]);
 bool yaDicho(int, int [], int);
 void marcarNumero(int, int mat[3][3]);
 void tableroActualizado(int mat[3][3]);
+bool tableroCompleto(int mat[3][3]);
 
 /*FUNCION MAIN*/
 int main(void)
@@ -240,4 +241,17 @@ void tableroActualizado(int mat[3][3])
         }
         cout << endl << endl;
     }
+}
+
+/*FUNCION PARA VERIFICAR SI EL TABLERO ESTA COMPLETAMENTE LLENO DE CEROS*/
+bool tableroCompleto(int mat[3][3])
+{
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (mat[i][j] != 0) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
