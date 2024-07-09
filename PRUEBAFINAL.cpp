@@ -131,6 +131,18 @@ int main(void)
                 } else {
                     cout << "No se pudo abrir el archivo para guardar el registro de ganadores." << endl;
                 }
+                /*LEYENDO ARCHIVO DE REGISTRO DE GANADORES*/
+                ifstream archivoLectura("registroganadores.txt");
+
+                if (archivoLectura.is_open()) {
+                    string linea;
+                    while (getline(archivoLectura, linea)) {
+                        cout << linea << endl;
+                    }
+                    archivoLectura.close();
+                } else {
+                    cout << "No se pudo abrir el archivo 'registroganadores.txt'" << endl;
+                }
 
                 break;
             }
