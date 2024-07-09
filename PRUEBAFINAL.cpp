@@ -88,6 +88,19 @@ int main(void)
 
                 contadorPartidas++;
 
+                /*LEYENDO ARCHIVO DE REGISTRO DE PARTIDAS*/
+                ifstream archivoLectura("registropartidas.txt");
+
+                if (archivoLectura.is_open()) {
+                    string linea;
+                    while (getline(archivoLectura, linea)) {
+                        cout << linea << endl;
+                    }
+                    archivoLectura.close();
+                } else {
+                    cout << "No se pudo abrir el archivo 'registropartidas.txt'" << endl;
+                }
+
                 break; 
             }
 
