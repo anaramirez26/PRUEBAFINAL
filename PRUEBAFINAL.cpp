@@ -65,7 +65,17 @@ int main(void)
                     archivo << "Jugadores: " << arrjug[0] << " y " << arrjug[1] << endl;
 
                     int puntuacionJugador1 = 0, puntuacionJugador2 = 0;
-
+                    /*FOR QUE CUENTA LA PUNTUACION DE LOS JUGADORES CON RESPECTO A LOS NUMEROS MARCADOS EN SU TABLERO*/
+                    for (int i = 0; i < 3; i++) {
+                        for (int j = 0; j < 3; j++) {
+                            if (mat[0][i][j] == 0) {
+                                puntuacionJugador1++;
+                            }
+                            if (mat[1][i][j] == 0) {
+                                puntuacionJugador2++;
+                            }
+                        }
+                    }
                     archivo << "Puntuacion de " << arrjug[0] << ": " << puntuacionJugador1 << "/9" << endl;
                     archivo << "Puntuacion de " << arrjug[1] << ": " << puntuacionJugador2 << "/9" << endl;
                     archivo << endl;
