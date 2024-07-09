@@ -20,6 +20,7 @@ bool verificarEmpate(int mat[2][3][3]);
 void mostrarGanador(int mat[2][3][3], string arrjug[2], bool &juegoTerminado);
 
 int contadorPartidas = 1; /*INICIALIZANDO EN 1 LA VARIABLE CONTADOR DE PARTIDAS PARA REGISTRO DE PARTIDAS*/
+int contadorPartidasGanadas = 1; /*INICIALIZANDO EN 1 LA VARIABLE CONTADOR DE PARTIDAS GANADAS PARA REGISTRO DE GANADORES*/
 /*FUNCION MAIN*/
 int main(void)
 {   
@@ -110,6 +111,21 @@ int main(void)
                 ofstream archivo("registroganadores.txt", ios::app);
 
                 if (archivo.is_open()) {
+                    if (verificarEmpate(mat)) {
+                        archivo << "Partida #" << (contadorPartidasGanadas++) << ":" << endl;
+                        archivo << "Empate entre " << arrjug[0] << " y " << arrjug[1] << endl;
+                        archivo << endl;
+                    } else {
+                        if (tableroCompleto(mat[0])) {
+                            archivo << "Partida #" << (contadorPartidasGanadas++) << ":" << endl;
+                            archivo << "Ganador: " << arrjug[0] << endl;
+                            archivo << endl;
+                        } else if (tableroCompleto(mat[1])) {
+                            archivo << "Partida #" << (contadorPartidasGanadas++) << ":" << endl;
+                            archivo << "Ganador: " << arrjug[1] << endl;
+                            archivo << endl;
+                        }
+                    }
                     cout << "Registro de ganador guardado en 'registroganadores.txt'" << endl << endl;
                     archivo.close();
                 } else {
