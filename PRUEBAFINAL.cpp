@@ -157,12 +157,83 @@ int main(void)
             }
 
             case 5: {
-                cout << endl << "INSTRUCCIONES DEL JUEGO" << endl << endl;
+                cout << endl << "INSTRUCCIONES DEL JUEGO BINGO" << endl << endl;
+                cout << "Objetivo del Juego: El objetivo del juego es ser el primer jugador en completar su tablero con ceros." << endl;
+                cout << "Un jugador completa su tablero cuando todos los numeros en su tablero han sido reemplazados por ceros." << endl << endl;
+                
+                cout << "COMO JUGAR?" << endl << endl;
+
+                cout << "1. Preparacion: " << endl;
+                cout << "- Cada uno de los dos jugadores recibe un tablero de 3x3 con 9 numeros aleatorios del 1 al 20." << endl;
+                cout << "- Los jugadores ingresan sus nombres para identificarse durante el juego." << endl << endl;
+
+                cout << "2. Desarrollo del Juego: " << endl;
+                cout << "- Un bot se encarga de generar numeros aleatorios del 1 al 20." << endl;
+                cout << "- El bot generara un numero a la vez. Los jugadores deben esperar a que el bot genere el numero." << endl;
+                cout << "- Si el numero generado por el bot coincide con un numero en el tablero de un jugador, ese numero en el" << endl;
+                cout << "tablero se reemplaza por un cero. Esto marca que el numero ha sido dicho." << endl << endl;
+
+                cout << "3. Marcar los numeros: " << endl;
+                cout << "- Cada vez que el bot genera un numero, los tableros de los jugadores se actualizan automaticamente." << endl;
+                cout << "El numero generado se reemplaza por un cero si se encuentra en el tablero de alguno de los jugadores." << endl << endl;
+
+                cout << "4. Ganador/Empate: " << endl;
+                cout << "- El primer jugador que complete su tablero con ceros gana la partida." << endl;
+                cout << "- Si ambos tableros se completan simultaneamente, el juego termina en empate. " << endl << endl;
+
+                cout << "5. Pausas y continuacion> " << endl;
+                cout << "- Durante el juego, los jugadores pueden optar por ver las reglas nuevamente seleccionando la opcion de ayuda." << endl;
+                cout << "- Para continuar el juego, los jugadores deben seleccionar la opcion de continuar." << endl << endl;
+
+                cout << "MANEJO DEL PROGRAMA" << endl;
+                cout << "(Opciones del menu)" << endl << endl;
+
+                cout << "1. NUEVA PARTIDA: " << endl;
+                cout << "- Comienza una nueva partida de bingo." << endl;
+                cout << "- Los jugadores ingresan sus nombres. " << endl;
+                cout << "- Se generan y myestran los tableros iniciales de cada jugador. " << endl; 
+                cout << "- El juego comienza con el bot generando numeros aleatorios. " << endl << endl;
+
+                cout << "2. REGISTRO DE PARTIDAS: " << endl;
+                cout << "- Guarda en un archivo de texto llamado 'registropartidas' y muestra el registro de partidas jugadas con los jugadores inscritos y sus puntuaciones. " << endl;
+                cout << "- RECUERDA: para guardar la partida, se debe seleccionar la opcion '2' del menu, " << endl;
+                cout << "de lo contrario, la partida no se guardara." << endl;
+                cout << "- Se leeran las partidas que fueron guardadas al finalizar." << endl << endl;
+
+                cout << "3. REGISTRO DE GANADORES: " << endl;
+                cout << "- Guarda en un archivo de texto llamado 'registroganadores' y muestra el registro de ganadores de cada partida, sin sus puntuaciones. " << endl;
+                cout << "(si son ganadores, se asume que su puntuacion fue de 9/9)." << endl;
+                cout << "- RECUERDA: para guardar a los ganadores se debe seleccionar la opcion '3' del menu, " << endl;
+                cout << "de lo contrario, el ganador no se guardara. " << endl;
+                cout << "- Se leeran los ganadores que fueron guardados al finalizar cada partida. " << endl << endl;
+
+                cout << "4. INTEGRANTES DE MAX: " << endl;
+                cout << "Muestra la lista de los integrantes del grupo que desarrollaron el juego." << endl << endl;
+
+                cout << "5. INSTRUCCIONES DEL JUEGO: " << endl;
+                cout << "Muestra las instrucciones detalladas sobre como jugar el juego y como manejar el programa. " << endl << endl;
+
+                cout << "6. SALIR DEL JUEGO: " << endl;
+                cout << "- Termina la aplicacion y sale del juego. " << endl << endl;
+
+                cout << "Notas Adicionales: " << endl;
+                cout << "- El juego esta disenado para ser automatico en la generacion y marcado de numeros. " << endl;
+                cout << "- Los jugadores deben prestar atencion a los numeros generados por el bot y observar " << endl;
+                cout << "como se actualizan sus tableros. " << endl << endl;
+
+                cout << "AYUDA DURANTE EL JUEGO: " << endl;
+                cout << "1. Mostrar la Ayuda: Puedes acceder a la ayuda en cualquier momento durante el juego para " << endl;
+                cout << "revisar las reglas y entender como continuar. " << endl;
+                cout << "2. Continuar con la Partida: Despues de ver la ayuda, puedes continuar con el juego" << endl;
+                cout << "sin interrupciones adicionales. " << endl << endl;
+
+                cout << "BUENA SUERTE, Y QUE TE DIVIERTAS JUGANDO AL BINGO!" << endl << endl;
+
                 break;
             }
 
             case 6: {
-                cout << "SALIR " << endl;
+                cout << endl << "HAS SALIDO DEL JUEGO..." << endl << endl;
                 break;
             }
 
