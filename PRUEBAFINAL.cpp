@@ -106,6 +106,16 @@ int main(void)
 
             case 3: {
                 cout << endl << "REGISTRO DE GANADORES" << endl << endl;
+                 /*CREANDO ARCHIVO PARA REGISTRO DE GANADORES*/
+                ofstream archivo("registroganadores.txt", ios::app);
+
+                if (archivo.is_open()) {
+                    cout << "Registro de ganador guardado en 'registroganadores.txt'" << endl << endl;
+                    archivo.close();
+                } else {
+                    cout << "No se pudo abrir el archivo para guardar el registro de ganadores." << endl;
+                }
+
                 break;
             }
             
